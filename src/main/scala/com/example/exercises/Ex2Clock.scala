@@ -9,7 +9,7 @@ object Ex2Clock extends IOApp.Simple {
 
   val tickingClock: IO[Unit] = for {
 //    _ <- IO(println(System.currentTimeMillis))  // this is it raw instead of IO.print
-    _ <- IO.print(System.currentTimeMillis)
+    _ <- IO.println(System.currentTimeMillis)
     _ <- IO.sleep(1.second)
     _ <- tickingClock
   } yield()
