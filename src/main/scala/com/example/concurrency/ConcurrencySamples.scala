@@ -14,7 +14,7 @@ object ConcurrencySamples extends IOApp.Simple {
   val ioa: IO[String] = IO("hello").delayBy(5000 millis).customDebug
   val iob: IO[String] = IO("world").customDebug *> IO.raiseError(new RuntimeException("lolololol"))
 
-  def myParMapNRough[A,B,C](ia: IO[A], ib: IO[B])(f: (A, B) => C): IO[C] = for {
+  def myParMapNNaive[A,B,C](ia: IO[A], ib: IO[B])(f: (A, B) => C): IO[C] = for {
     iaFiber <- ia.start
     ibFiber <- ib.start
     // CE3 join returns an Outcome not the value directly...joinWithNever handles that, but not
