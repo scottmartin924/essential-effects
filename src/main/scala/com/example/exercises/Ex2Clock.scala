@@ -12,5 +12,5 @@ object Ex2Clock extends IOApp.Simple {
     _ <- IO.println(System.currentTimeMillis)
     _ <- IO.sleep(1.second)
     _ <- tickingClock
-  } yield()
+  } yield ()
 }

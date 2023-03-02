@@ -12,10 +12,10 @@ object Ex1Timings extends App {
     start <- clock
     result <- action
     end <- clock
-  } yield ((end-start).milliseconds, result)
+  } yield ((end - start).milliseconds, result)
 
-  val io = time(MyIO.putStr("hello")).flatMap {
-    case (duration, _) => MyIO.putStr(s"'hello' took $duration")
+  val io = time(MyIO.putStr("hello")).flatMap { case (duration, _) =>
+    MyIO.putStr(s"'hello' took $duration")
   }
 
   io.unsafeRun()

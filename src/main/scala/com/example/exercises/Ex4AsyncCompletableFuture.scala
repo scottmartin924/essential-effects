@@ -17,8 +17,11 @@ object Ex4AsyncCompletableFuture extends IOApp.Simple {
       IO.async_ { callback =>
         val handler: (A, Throwable) => Unit = {
           case (result, null) => callback(Right(result))
-          case (null, err) => callback(Left(err))
-          case (result, err) => sys.error(s"CompletableFuture handler has two non-null values: $result, $err")
+          case (null, err)    => callback(Left(err))
+          case (result, err) =>
+            sys.error(
+              s"CompletableFuture handler has two non-null values: $result, $err"
+            )
         }
         completableFuture.handle(handler.asJavaBiFunction)
         ()
@@ -26,5 +29,6 @@ object Ex4AsyncCompletableFuture extends IOApp.Simple {
     }
   }
 
-  def cf(): CompletableFuture[String] = CompletableFuture.supplyAsync(() => "woot!")
+  def cf(): CompletableFuture[String] =
+    CompletableFuture.supplyAsync(() => "woot!")
 }

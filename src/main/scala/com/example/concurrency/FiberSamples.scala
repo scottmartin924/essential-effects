@@ -14,7 +14,7 @@ object FiberSamples extends IOApp.Simple {
 //    _ <- fiber.join
     // Cancel a running fiber
     _ <- cancellation.customDebug()
-  } yield()).customDebug()
+  } yield ()).customDebug()
 
   // cancelling a running effect
   def cancellation = for {

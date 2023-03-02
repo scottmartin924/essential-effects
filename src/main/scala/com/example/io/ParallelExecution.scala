@@ -25,6 +25,5 @@ object ParallelExecution extends IOApp.Simple {
     // Using par extension methods
     (ioa, iob).parFlatMapN((_, _) => IO.println("Done"))
 
-    
   }
 }

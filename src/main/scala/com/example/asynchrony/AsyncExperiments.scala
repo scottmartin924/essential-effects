@@ -17,11 +17,11 @@ object AsyncExperiments extends IOApp.Simple {
     // more like CE2 IO.async
     IO.async_[Int] { cb =>
       api.compute.onComplete {
-        case Success(value) => cb(Right(value))
+        case Success(value)     => cb(Right(value))
         case Failure(exception) => cb(Left(exception))
       }
     }
-      //.guarantee(IO.cede)
+    // .guarantee(IO.cede)
     // Based on migration guide (https://typelevel.org/cats-effect/docs/migration-guide#shifting)
     // IO.shift isn't needed here anymore anyways, but cede is an interesting idea
     // I didn't know about
